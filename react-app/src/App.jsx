@@ -100,25 +100,29 @@
 
 // export default App;
 
-// practice code for React App with a simple dice roll game
+// practice code for React App with a simple color picker
 import { useState } from 'react';
 
 function App() {
-  const [dice, setDice] = useState(1);
-
-  const rollDice = () => {
-    const value = Math.floor(Math.random() * 6) + 1;
-    setDice(value);
-  };
+  const [color, setColor] = useState('#000000');
 
   return (
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <h1>🎲 Dice Roll</h1>
-      <h2>You rolled: {dice}</h2>
-      <button onClick={rollDice}>Roll</button>
+      <h1>🎨 Pick a Color</h1>
+      <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+      <div
+        style={{
+          margin: '20px auto',
+          height: '100px',
+          width: '100px',
+          backgroundColor: color,
+          border: '1px solid #000',
+        }}
+      />
     </div>
   );
 }
 
 export default App;
+
 
