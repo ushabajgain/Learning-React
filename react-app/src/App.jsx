@@ -98,31 +98,38 @@
 //   );
 // }
 
-// export default App;
+// export default App;import { useState } from 'react';
 
-// practice code for React App with a simple color picker
-import { useState } from 'react';
-
+// practice code for React App with a simple number guessing game
 function App() {
-  const [color, setColor] = useState('#000000');
+  const secret = 7; // You can make this random if you want
+  const [guess, setGuess] = useState('');
+  const [message, setMessage] = useState('');
+
+  const checkGuess = () => {
+    const num = parseInt(guess);
+    if (num === secret) setMessage('✅ Correct!');
+    else if (num > secret) setMessage('🔻 Too High!');
+    else setMessage('🔺 Too Low!');
+  };
 
   return (
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <h1>🎨 Pick a Color</h1>
-      <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
-      <div
-        style={{
-          margin: '20px auto',
-          height: '100px',
-          width: '100px',
-          backgroundColor: color,
-          border: '1px solid #000',
-        }}
+      <h1>🎯 Guess the Number (1–10)</h1>
+      <input
+        type="number"
+        value={guess}
+        onChange={(e) => setGuess(e.target.value)}
+        placeholder="Enter a number"
       />
+      <button onClick={checkGuess}>Check</button>
+      <h2>{message}</h2>
     </div>
   );
 }
 
 export default App;
+
+
 
 
