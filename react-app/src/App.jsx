@@ -76,26 +76,49 @@
 // export default App;
 
 
-// practice code for React App with a simple Celsius to Fahrenheit converter
+// // practice code for React App with a simple Celsius to Fahrenheit converter
+// import { useState } from 'react';
+
+// function App() {
+//   const [celsius, setCelsius] = useState('');
+
+//   const fahrenheit = celsius ? (parseFloat(celsius) * 9) / 5 + 32 : '';
+
+//   return (
+//     <div style={{ textAlign: 'center', marginTop: '40px' }}>
+//       <h1>🌡️ Celsius to Fahrenheit</h1>
+//       <input
+//         type="number"
+//         value={celsius}
+//         onChange={(e) => setCelsius(e.target.value)}
+//         placeholder="Enter °C"
+//       />
+//       <h2>{celsius && `${fahrenheit}°F`}</h2>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// practice code for React App with a simple dice roll game
 import { useState } from 'react';
 
 function App() {
-  const [celsius, setCelsius] = useState('');
+  const [dice, setDice] = useState(1);
 
-  const fahrenheit = celsius ? (parseFloat(celsius) * 9) / 5 + 32 : '';
+  const rollDice = () => {
+    const value = Math.floor(Math.random() * 6) + 1;
+    setDice(value);
+  };
 
   return (
     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <h1>🌡️ Celsius to Fahrenheit</h1>
-      <input
-        type="number"
-        value={celsius}
-        onChange={(e) => setCelsius(e.target.value)}
-        placeholder="Enter °C"
-      />
-      <h2>{celsius && `${fahrenheit}°F`}</h2>
+      <h1>🎲 Dice Roll</h1>
+      <h2>You rolled: {dice}</h2>
+      <button onClick={rollDice}>Roll</button>
     </div>
   );
 }
 
 export default App;
+
