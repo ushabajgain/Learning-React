@@ -1,4 +1,5 @@
 // practice code for React App
+
 // const App=()=>{
 //   return(
 //     <>
@@ -14,122 +15,56 @@
 // export default App;
 
 
+// practice login form code 
 
-// practice code for React App with a simple counter
-// import { useState } from 'react';
+import { useState } from 'react';
 
-// function App() {
-//   const [count, setCount] = useState(0);
-
-//   return (
-//     <div style={{ textAlign: "center", marginTop: "50px" }}>
-//       <h1>Counter: {count}</h1>
-//       <button onClick={() => setCount(count - 1)}>➖</button>
-//       <button onClick={() => setCount(count + 1)}>➕</button>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// // practice code for React App with a simple To-Do List
-// import { useState } from 'react';
-
-// function App() {
-//   const [task, setTask] = useState('');
-//   const [tasks, setTasks] = useState([]);
-
-//   const addTask = () => {
-//     if (task.trim() !== '') {
-//       setTasks([...tasks, task]);
-//       setTask('');
-//     }
-//   };
-
-//   const removeTask = (indexToRemove) => {
-//     setTasks(tasks.filter((_, index) => index !== indexToRemove));
-//   };
-
-//   return (
-//     <div style={{ textAlign: 'center', marginTop: '30px' }}>
-//       <h1>📝 To-Do List</h1>
-//       <input
-//         type="text"
-//         value={task}
-//         onChange={(e) => setTask(e.target.value)}
-//         placeholder="Enter a task"
-//       />
-//       <button onClick={addTask}>Add</button>
-
-//       <ul style={{ listStyle: 'none' }}>
-//         {tasks.map((t, i) => (
-//           <li key={i}>
-//             {t} <button onClick={() => removeTask(i)}>❌</button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// // practice code for React App with a simple Celsius to Fahrenheit converter
-// import { useState } from 'react';
-
-// function App() {
-//   const [celsius, setCelsius] = useState('');
-
-//   const fahrenheit = celsius ? (parseFloat(celsius) * 9) / 5 + 32 : '';
-
-//   return (
-//     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-//       <h1>🌡️ Celsius to Fahrenheit</h1>
-//       <input
-//         type="number"
-//         value={celsius}
-//         onChange={(e) => setCelsius(e.target.value)}
-//         placeholder="Enter °C"
-//       />
-//       <h2>{celsius && `${fahrenheit}°F`}</h2>
-//     </div>
-//   );
-// }
-
-// export default App;import { useState } from 'react';
-
-// practice code for React App with a simple number guessing game
 function App() {
-  const secret = 7; // You can make this random if you want
-  const [guess, setGuess] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const checkGuess = () => {
-    const num = parseInt(guess);
-    if (num === secret) setMessage('✅ Correct!');
-    else if (num > secret) setMessage('🔻 Too High!');
-    else setMessage('🔺 Too Low!');
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Dummy credentials
+    const dummyEmail = 'test@example.com';
+    const dummyPassword = '123456';
+
+    if (email === dummyEmail && password === dummyPassword) {
+      setMessage('✅ Login Successful!');
+    } else {
+      setMessage('❌ Invalid Email or Password');
+    }
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '40px' }}>
-      <h1>🎯 Guess the Number (1–10)</h1>
-      <input
-        type="number"
-        value={guess}
-        onChange={(e) => setGuess(e.target.value)}
-        placeholder="Enter a number"
-      />
-      <button onClick={checkGuess}>Check</button>
-      <h2>{message}</h2>
+    <div style={{ textAlign: 'center', marginTop: '60px' }}>
+      <h1>🔐 Login</h1>
+      <form onSubmit={handleLogin} style={{ display: 'inline-block', textAlign: 'left' }}>
+        <div style={{ marginBottom: '10px' }}>
+          <label>Email: </label><br />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <label>Password: </label><br />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" style={{ width: '100%' }}>Login</button>
+      </form>
+      <h3 style={{ marginTop: '20px' }}>{message}</h3>
     </div>
   );
 }
 
 export default App;
-
-
-
-
